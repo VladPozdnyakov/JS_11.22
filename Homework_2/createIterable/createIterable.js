@@ -2,8 +2,8 @@
 
 function createIterable(from, to) {
 
-    if(Number.isFinite(to) || !Number.isFinite(from) || to <= from) {
-        throw new Error ('Arguments are not numbera')
+    if(typeof from !== 'number' || typeof to !== 'number' || to <= from) {
+        throw new Error ('Arguments are not numbers')
     }
     
     const obj = {
