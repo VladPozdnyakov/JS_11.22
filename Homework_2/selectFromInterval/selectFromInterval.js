@@ -15,6 +15,9 @@ function selectFromInterval(arr, from, to) {
         if(isNaN(element)){
             throw new Error(`${element} is not a number`)
         }
+        if(from < to){
+            returnArr = arr.filter(element)
+        }
         if(element >= from && element <= to){
             returnArr.push(element)
         }
