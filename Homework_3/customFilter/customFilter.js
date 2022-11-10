@@ -1,7 +1,9 @@
 'use strict'
 
 Array.prototype.customFilter = function (callback, obj){
-    if(typeof(callback) !== 'function' || typeof obj !== 'object' || Array.isArray(obj)){
+    if (typeof(callback) !== 'function'){
+        throw new Error
+    } else if (typeof (obj) !== 'object' && Array.isArray(obj)){
         throw new Error()
     }
     const filteredArray = []
@@ -12,3 +14,7 @@ Array.prototype.customFilter = function (callback, obj){
     }
     return filteredArray
 }
+ 
+
+const arr = [1, 2, 3]
+const filteredArr = arr.customFilter(function(item) { return item > 2 })
