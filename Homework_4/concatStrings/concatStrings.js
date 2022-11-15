@@ -25,4 +25,4 @@
   }
 }
 
-console.log(concatStrings('a')(null)('c')())
+
