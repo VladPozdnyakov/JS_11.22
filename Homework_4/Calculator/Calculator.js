@@ -1,4 +1,3 @@
-'use strict'
 
 class Calculator {
     constructor(par1, par2) {
@@ -42,10 +41,3 @@ class Calculator {
         return this.par1 / this.par2
     }
 }
-
-
-
-
-
-
-
