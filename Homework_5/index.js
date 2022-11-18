@@ -193,7 +193,7 @@ class Car {
     if (typeof value !== "string" || value.length > 50 || value.length < 1) {
       throw new Error("Invalid brand name");
     }
-    this.#brand = value;
+    this.#model = value;
   }
   get yearOfManufacturing() {
     return this.#yearOfManufacturing;
