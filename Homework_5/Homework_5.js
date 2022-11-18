@@ -161,3 +161,90 @@ class LinkedList {
     return list;
   }
 }
+
+//----------------------------------Car-----------------------------
+
+class Car {
+  #brand = "";
+  #model = "";
+  #yearOfManufacturing = 1950;
+  #maxSpeed = 100;
+  #maxFuelVolume = 20;
+  #fuelConsumption = 1;
+  #damage = 1;
+  #currentFuelVolume = 0;
+  #isStarted = false;
+  #mileage = 0;
+  #health = 100;
+
+  get brand() {
+    return this.#brand;
+  }
+  set brand(value) {
+    if (typeof value !== "string" || value.length > 50 || value.length < 1) {
+      throw new Error("Invalid brand name");
+    }
+    this.#brand = value;
+  }
+  get model() {
+    return this.#model;
+  }
+  set model(value) {
+    if (typeof value !== "string" || value.length > 50 || value.length < 1) {
+      throw new Error("Invalid brand name");
+    }
+    this.#brand = value;
+  }
+  get yearOfManufacturing() {
+    return this.#yearOfManufacturing;
+  }
+  set yearOfManufacturing(year) {
+    let today = new Date();
+    let comimg_Year = today.getFullYear();
+    if (year < 1950 || year > comimg_Year || !Number.isFinite(year)) {
+      throw new Error("Invalid year of manufacturing");
+    }
+    this.yearOfManufacturing = year;
+  }
+  get maxSpeed() {
+    return this.#maxSpeed;
+  }
+  set maxSpeed(speed) {
+    if (speed > 330 || speed > 100 || !Number.isFinite(speed)) {
+      throw new Error("Invalid max speed");
+    }
+    this.#maxSpeed = speed;
+  }
+  get maxFuelVolume() {
+    return this.#maxFuelVolume;
+  }
+  set maxFuelVolume(volume) {
+    if (volume > 100 || volume < 20 || !Number.isFinite(volume)) {
+      throw new Error("Invalid max fuel volume");
+    }
+    this.#maxFuelVolume = volume;
+  }
+
+  get damage() {
+    return this.#damage;
+  }
+  set damage(value) {
+    if (value < 1 || value > 5 || !Number.isFinite(value)) {
+      throw new Error("nvalid damage");
+    }
+    this.#damage = value;
+  }
+  get fuelConsumption() {
+    return this.#fuelConsumption;
+  }
+  set fuelConsumption(consumption) {
+    if (consumption <= 0 || !Number.isFinite) {
+      throw new Error("Invalid fuel consumption");
+    }
+    this.#fuelConsumption = consumption;
+  }
+  get currentFuelVolume() {}
+  get isStarted() {}
+  get mileage() {}
+  get health() {}
+}
