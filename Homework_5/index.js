@@ -243,8 +243,81 @@ class Car {
     }
     this.#fuelConsumption = consumption;
   }
-  get currentFuelVolume() {}
-  get isStarted() {}
-  get mileage() {}
-  get health() {}
+  get currentFuelVolume() {
+    return this.#currentFuelVolume;
+  }
+  get isStarted() {
+    return this.#isStarted;
+  }
+  get mileage() {
+    return this.#mileage;
+  }
+  get health() {
+    return this.#health;
+  }
+  start() {
+    if (this.#isStarted === true) {
+      throw new Error("Car hasn't started yet");
+    }
+    this.#isStarted = true;
+  }
+  shutDownEngine() {
+    if (!this.#isStarted === false) {
+      throw new Error("Car hasn't started yet");
+    }
+    this.#isStarted = true;
+  }
+  fillUpGasTank(value) {
+    if (value <= 0 || !Number.isFinite(value)) {
+      throw new Error("Invalid fuel amount");
+    }
+    if (value + this.#currentFuelVolume > this.#maxFuelVolume) {
+      throw new Error("Too much fue");
+    }
+    if (this.#isStarted === true) {
+      throw new Error("You have to shut down your car first");
+    }
+    this.#currentFuelVolume = this.#currentFuelVolume + value;
+  }
+  drive(speed, hours) {
+    const distance = speed * hours;
+
+    if (speed <= 0 || !Number.isFinite(speed)) {
+      throw new Error("Invalid speed");
+    }
+    if (hours <= 0 || !Number.isFinite(speed)) {
+      throw new Error("Invalid duration");
+    }
+    if (speed > this.#maxSpeed) {
+      throw new Error("Car can't go this fast");
+    }
+    if (this.#isStarted === false) {
+      throw new Error("You have to start your car first");
+    }
+    if ((this.#currentFuelVolume / this.#fuelConsumption) * 100 < distance) {
+      throw new Error("You don't have enough fuel");
+    }
+    if ((this.#health / this.#damage) * 100 < distance) {
+      throw new Error("Your car won’t make it");
+    }
+    this.#currentFuelVolume =
+      this.#currentFuelVolume - (this.#fuelConsumption / 100) * distance;
+    this.#health = this.#health - (this.#damage / 100) * distance;
+    this.#mileage = this.#mileage + distance;
+  }
+  repair() {
+    if (this.#isStarted === true) {
+      throw new Error("ou have to shut down your car first");
+    }
+    if (this.#currentFuelVolume !== this.#maxFuelVolume) {
+      throw new Error("You have to fill up your gas tank first");
+    }
+    this.#health = 100;
+  }
+  getFullAmount() {
+    if (this.#currentFuelVolume === this.#maxFuelVolume) {
+      return 0;
+    }
+    return this.#maxFuelVolume - this.#currentFuelVolume;
+  }
 }
