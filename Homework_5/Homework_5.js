@@ -150,7 +150,7 @@ class LinkedList {
     }
     return newArray;
   }
-  static fromIterable() {
+  static fromIterable(iterable) {
     if (!iterable || !typeof iterable[Symbol.iterator] === "function") {
       throw new Error("Not iterable");
     }
